@@ -56,6 +56,8 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
 
     private EditText mToDoTextBodyEditText;
     private EditText mToDoTextBodyDescription;
+    private EditText mToDoTextBodyIngredientes;
+    private EditText mToDoTextBodyModopreparo;
 
     private SwitchCompat mToDoDateSwitch;
     //    private TextView mLastSeenTextView;
@@ -81,6 +83,8 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
 
     private String mUserEnteredText;
     private String mUserEnteredDescription;
+    private String mUserEnteredIngredientes;
+    private String mUserEnteredModopreparo;
     private boolean mUserHasReminder;
     private Toolbar mToolbar;
     private Date mUserReminderDate;
@@ -132,6 +136,8 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
 
         mUserEnteredText = mUserToDoItem.getToDoText();
         mUserEnteredDescription = mUserToDoItem.getmToDoDescription();
+        mUserEnteredIngredientes = mUserToDoItem.getmToDoIngredientes();
+        mUserEnteredModopreparo = mUserToDoItem.getmToDoModopreparo();
         mUserHasReminder = mUserToDoItem.hasReminder();
         mUserReminderDate = mUserToDoItem.getToDoDate();
         mUserColor = mUserToDoItem.getTodoColor();
@@ -162,6 +168,8 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
         mToDoTextBodyEditText = (EditText) view.findViewById(R.id.userToDoEditText);
         mToDoTextBodyDescription= (EditText) view.findViewById(R.id.userToDoDescription);
         mToDoDateSwitch = (SwitchCompat) view.findViewById(R.id.toDoHasDateSwitchCompat);
+        mToDoTextBodyIngredientes= (EditText) view.findViewById(R.id.userToDoIngredientes);
+        mToDoTextBodyModopreparo= (EditText) view.findViewById(R.id.userToDoModoPreparo);
 //        mLastSeenTextView = (TextView)findViewById(R.id.toDoLastEditedTextView);
         mToDoSendFloatingActionButton = (FloatingActionButton) view.findViewById(R.id.makeToDoFloatingActionButton);
         mReminderTextView = (TextView) view.findViewById(R.id.newToDoDateTimeReminderTextView);
@@ -210,6 +218,8 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
         mToDoTextBodyEditText.requestFocus();
         mToDoTextBodyEditText.setText(mUserEnteredText);
         mToDoTextBodyDescription.setText(mUserEnteredDescription);
+        mToDoTextBodyIngredientes.setText(mUserEnteredIngredientes);
+        mToDoTextBodyModopreparo.setText(mUserEnteredModopreparo);
         InputMethodManager imm = (InputMethodManager) this.getActivity().getSystemService(INPUT_METHOD_SERVICE);
 //        imm.showSoftInput(mToDoTextBodyEditText, InputMethodManager.SHOW_IMPLICIT);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
@@ -247,6 +257,44 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
                     public void afterTextChanged(Editable s) {
                     }
                 });
+
+        mToDoTextBodyIngredientes.setSelection(mToDoTextBodyIngredientes.length());
+        mToDoTextBodyModopreparo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mUserEnteredIngredientes = s.toString();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+
+        mToDoTextBodyModopreparo.setSelection(mToDoTextBodyModopreparo.length());
+        mToDoTextBodyModopreparo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mUserEnteredModopreparo = s.toString();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+
+
 
 
 //        String lastSeen = formatDate(DATE_FORMAT, mLastEdited);
@@ -608,6 +656,8 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
         mUserToDoItem.setHasReminder(mUserHasReminder);
         mUserToDoItem.setToDoDate(mUserReminderDate);
         mUserToDoItem.setTodoColor(mUserColor);
+        mUserToDoItem.setmToDoIngredientes(mUserEnteredIngredientes);
+        mUserToDoItem.setmToDoModopreparo(mUserEnteredModopreparo);
         i.putExtra(MainFragment.TODOITEM, mUserToDoItem);
         getActivity().setResult(result, i);
     }

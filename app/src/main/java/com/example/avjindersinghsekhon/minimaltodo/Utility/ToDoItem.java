@@ -13,12 +13,16 @@ public class ToDoItem implements Serializable {
     //add description
     private String mToDoDescription;
     //    private Date mLastEdited;
+    private String mToDoIngredientes;
+    private String mToDoModopreparo;
     private int mTodoColor;
     private Date mToDoDate;
     private UUID mTodoIdentifier;
     //add description
     private static final String TODODESCRIPTION = "tododescription";
     private static final String TODOTEXT = "todotext";
+    private static final String TODOINGREDIENTES = "todoingredientes";
+    private static final String TODOMODOPREPARO = "todomodopreparo";
     private static final String TODOREMINDER = "todoreminder";
     //    private static final String TODOLASTEDITED = "todolastedited";
     private static final String TODOCOLOR = "todocolor";
@@ -40,6 +44,8 @@ public class ToDoItem implements Serializable {
         mToDoDescription = jsonObject.getString(TODODESCRIPTION);
         mHasReminder = jsonObject.getBoolean(TODOREMINDER);
         mTodoColor = jsonObject.getInt(TODOCOLOR);
+        mToDoIngredientes = jsonObject.getString(TODOINGREDIENTES);
+        mToDoModopreparo = jsonObject.getString(TODOMODOPREPARO);
 
         mTodoIdentifier = UUID.fromString(jsonObject.getString(TODOIDENTIFIER));
 
@@ -51,16 +57,35 @@ public class ToDoItem implements Serializable {
         }
     }
 
+    public String getmToDoIngredientes() {
+        return mToDoIngredientes;
+    }
+
+    public void setmToDoIngredientes(String mToDoIngredientes) {
+        this.mToDoIngredientes = mToDoIngredientes;
+    }
+
+    public String getmToDoModopreparo() {
+        return mToDoModopreparo;
+    }
+
+    public void setmToDoModopreparo(String mToDoModopreparo) {
+        this.mToDoModopreparo = mToDoModopreparo;
+    }
+
     public JSONObject toJSON() throws JSONException {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put(TODOTEXT, mToDoText);
         jsonObject.put(TODOREMINDER, mHasReminder);
         jsonObject.put(TODODESCRIPTION, mToDoDescription);
+        jsonObject.put(TODOINGREDIENTES, mToDoIngredientes);
+        jsonObject.put(TODOMODOPREPARO, mToDoModopreparo);
 //        jsonObject.put(TODOLASTEDITED, mLastEdited.getTime());
         if (mToDoDate != null) {
             jsonObject.put(TODODATE, mToDoDate.getTime());
         }
         jsonObject.put(TODOCOLOR, mTodoColor);
+
         jsonObject.put(TODOIDENTIFIER, mTodoIdentifier.toString());
 
         return jsonObject;

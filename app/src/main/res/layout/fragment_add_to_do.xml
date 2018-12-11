@@ -80,11 +80,72 @@
 
             </com.example.avjindersinghsekhon.minimaltodo.Utility.CustomTextInputLayout>
 
+            <com.example.avjindersinghsekhon.minimaltodo.Utility.CustomTextInputLayout
+                android:id="@+id/toDoCustomTextInputIngredientes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:gravity="center"
+                android:paddingTop="20dp"
+                app:hintTextAppearance="@style/FloatingLabelTextAppearance">
+
+                <EditText
+                    android:id="@+id/userToDoIngredientes"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginRight="32dp"
+                    android:layout_weight="0"
+                    android:gravity="start|top"
+                    android:hint="@string/ingredientes"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:lines="2"
+                    android:maxLines="6"
+                    android:scrollbars="vertical"
+                    android:textColor="@color/icons" />
+
+            </com.example.avjindersinghsekhon.minimaltodo.Utility.CustomTextInputLayout>
+
+            <com.example.avjindersinghsekhon.minimaltodo.Utility.CustomTextInputLayout
+                android:id="@+id/toDoCustomTextInputModoPreparo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:gravity="center"
+                android:paddingTop="20dp"
+                app:hintTextAppearance="@style/FloatingLabelTextAppearance">
+
+                <EditText
+                    android:id="@+id/userToDoModoPreparo"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginRight="32dp"
+                    android:layout_weight="0"
+                    android:gravity="start|top"
+                    android:hint="@string/modopreparo"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:lines="6"
+                    android:maxLines="6"
+                    android:scrollbars="vertical"
+                    android:textColor="@color/icons" />
+
+            </com.example.avjindersinghsekhon.minimaltodo.Utility.CustomTextInputLayout>
+
+
+
+
+
+
+
+
+
             <LinearLayout
                 android:id="@+id/todoReminderAndDateContainerLayout"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1.5"
+                android:visibility="invisible"
                 android:orientation="vertical">
 
 
@@ -226,3 +287,5 @@
 
     </android.support.design.widget.CoordinatorLayout>
 </LinearLayout>
+
+
