@@ -259,7 +259,7 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
                 });
 
         mToDoTextBodyIngredientes.setSelection(mToDoTextBodyIngredientes.length());
-        mToDoTextBodyModopreparo.addTextChangedListener(new TextWatcher() {
+        mToDoTextBodyIngredientes.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
